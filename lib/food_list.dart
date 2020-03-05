@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class FoodList extends StatefulWidget {
-  @override
-  _FoodListState createState() => _FoodListState();
-}
+// Widgets
+import 'food_card.dart';
 
-class _FoodListState extends State<FoodList> {
+class FoodList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amberAccent,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         elevation: 0,
         backgroundColor: Colors.amberAccent,
         title: Text(
@@ -25,82 +24,19 @@ class _FoodListState extends State<FoodList> {
       ),
       body: ListView(
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  10,
-                ),
-              ),
-              elevation: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(10),
-                        ),
-                        child: Image.network('https://mrecipes.com/wp-content/uploads/2019/01/featured-smoked-hamburgers.jpg'),
-                      ),
-                      Positioned(
-                        top: 10,
-                        left: 10,
-                        child: Text(
-                          'Hamburguesas',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'Q69',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.star,
-                              color: Colors.redAccent,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.redAccent,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.redAccent,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.redAccent,
-                            ),
-                            Icon(
-                              Icons.star_half,
-                              color: Colors.redAccent,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          FoodCard(
+            name: 'Hamburguesa',
+            price: 50,
+            rating: 5,
+            favorite: true,
+            image: 'https://mrecipes.com/wp-content/uploads/2019/01/featured-smoked-hamburgers.jpg',
+          ),
+          FoodCard(
+            name: 'Pizza',
+            price: 45,
+            rating: 2,
+            favorite: false,
+            image: 'https://www.scattidigusto.it/wp-content/uploads/2019/02/pizzeria-da-Michele-Napoli-Forcella-ricetta-margherita.jpg',
           ),
         ],
       ),
